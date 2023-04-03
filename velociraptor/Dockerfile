@@ -19,13 +19,8 @@ RUN chmod +x entrypoint && \
     wget -O /opt/velociraptor/mac/velociraptor_client "$MAC_BIN" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.exe "$WINDOWS_EXE" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.msi "$WINDOWS_MSI" && \
-    mkdir -p /opt/cyberchef && \
-    wget -O /tmp/CyberChef.zip https://github.com/gchq/CyberChef/releases/download/v9.32.3/CyberChef_v9.32.3.zip  && \
-    unzip -o /tmp/CyberChef.zip -d /opt/cyberchef && \
-    mv /opt/cyberchef/CyberChef_v9.32.3.html /opt/cyberchef/index.html && \
-    rm -f /tmp/CyberChef.zip && \
     # Clean up
     apt-get remove -y --purge curl wget jq && \
     apt-get clean
-WORKDIR /velociraptor
+WORKDIR ./
 CMD ["/entrypoint"]
